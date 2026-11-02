@@ -1,0 +1,247 @@
+report = """
+AI CUSTOMER SUPPORT INTELLIGENCE
+CONTEXTUAL ATTRIBUTE DISTRIBUTION AUDIT
+============================================================
+
+1. AUDIT OVERVIEW
+------------------------------------------------------------
+
+Audit Name:
+Contextual Attribute Distribution Analysis
+
+Dataset:
+Customer Support Tickets
+
+Records Analyzed: 25
+
+Attributes Investigated:
+- Ticket Priority
+- Ticket Channel
+- Ticket Status
+- Resolution
+
+Objective:
+To investigate the distribution, completeness, and
+reliability of contextual ticket attributes before
+using them in machine learning model development.
+
+
+2. TICKET PRIORITY DISTRIBUTION
+------------------------------------------------------------
+
+Total Records: 25
+Unique Categories: 4
+Missing Values: 0
+
+Category Distribution:
+
+High       : 10 records (40%)
+Low        :  6 records (24%)
+Critical   :  5 records (20%)
+Medium     :  4 records (16%)
+
+Finding:
+All four priority categories are represented.
+No missing priority values were identified.
+
+Engineering Assessment:
+The priority attribute is complete in the investigated
+sample. However, category definitions and assignment
+consistency should be validated before model training.
+
+
+3. TICKET CHANNEL DISTRIBUTION
+------------------------------------------------------------
+
+Total Records: 25
+Unique Categories: 4
+Missing Values: 0
+
+Known Category Distribution:
+
+Social media : 11 records (44%)
+Email        :  6 records (24%)
+Chat         :  3 records (12%)
+Other        :  5 records (20%)
+
+Note:
+The fourth category name was not visible in the
+captured output. Its count is inferred from the
+total of 25 records and the three visible categories.
+
+Finding:
+Social media is the most frequent channel in the
+investigated sample.
+
+Engineering Assessment:
+All records contain a channel value. The actual
+fourth category must be confirmed from the dataset
+before final documentation.
+
+
+4. TICKET STATUS DISTRIBUTION
+------------------------------------------------------------
+
+Total Records: 25
+Unique Categories: 3
+Missing Values: 0
+
+Category Distribution:
+
+Pending Customer Response : 11 records (44%)
+Open                      : 10 records (40%)
+Closed                    :  4 records (16%)
+
+Finding:
+Most investigated tickets are either awaiting
+customer responses or remain open.
+
+Engineering Assessment:
+Ticket status represents a contextual or potentially
+time-dependent attribute.
+
+It should not automatically be used as a prediction
+feature. Its availability at prediction time must
+be verified to prevent data leakage.
+
+
+5. RESOLUTION ATTRIBUTE ANALYSIS
+------------------------------------------------------------
+
+Total Records: 25
+Unique Values: 4
+Missing Values: 21
+
+Missing Resolution Records:
+21 (84%)
+
+Non-Missing Resolution Records:
+4 (16%)
+
+Observed Non-Missing Values:
+
+1. Take theory film assume.
+2. Budget probably ready at check.
+3. Act south series add than fast.
+4. Drug especially decade how impact break item.
+
+Finding:
+The Resolution attribute contains 84% missing values.
+
+The four non-missing values appear unrelated to
+meaningful customer-support resolution descriptions.
+
+Engineering Assessment:
+The non-missing values require investigation.
+They may represent synthetic, corrupted, or
+otherwise unreliable data.
+
+Do not treat these values as valid business
+resolution information without verification.
+
+
+6. KEY DATA QUALITY FINDINGS
+------------------------------------------------------------
+
+Finding 1: Priority Distribution
+
+All 25 investigated records contain priority values.
+Four categories are represented.
+
+Finding 2: Channel Distribution
+
+All 25 records contain channel values.
+The fourth category name needs confirmation.
+
+Finding 3: Ticket Status
+
+All 25 records contain status values.
+The status attribute may change over the ticket
+lifecycle and requires prediction-time validation.
+
+Finding 4: Resolution Completeness
+
+21 out of 25 records have missing resolution values.
+
+Missing percentage: 84%
+
+Finding 5: Resolution Reliability
+
+The four available resolution values appear
+semantically suspicious and require investigation.
+
+
+7. MACHINE LEARNING IMPLICATIONS
+------------------------------------------------------------
+
+1. Ticket Priority:
+   Candidate feature, subject to label and business
+   definition validation.
+
+2. Ticket Channel:
+   Candidate categorical feature after confirming
+   all category names and encoding requirements.
+
+3. Ticket Status:
+   Requires temporal validation to avoid data leakage.
+
+4. Resolution:
+   Should be excluded from model training until
+   missingness and semantic reliability are investigated.
+
+5. Feature Selection:
+   Feature selection should be based on prediction
+   objectives, availability at inference time,
+   and data quality.
+
+
+8. RECOMMENDED ENGINEERING ACTIONS
+------------------------------------------------------------
+
+1. Confirm the complete Ticket Channel distribution.
+
+2. Investigate the source of suspicious Resolution values.
+
+3. Determine why 84% of Resolution values are missing.
+
+4. Verify whether Ticket Status is available when
+   a prediction is requested.
+
+5. Document feature availability and data dependencies.
+
+6. Perform feature-target leakage assessment.
+
+7. Re-run the audit after any approved data corrections.
+
+8. Preserve the original dataset for reproducibility.
+
+
+9. FINAL ENGINEERING CONCLUSION
+------------------------------------------------------------
+
+The contextual attribute distribution audit identified
+incomplete and potentially unreliable information in
+the Resolution attribute.
+
+Ticket Priority, Ticket Channel, and Ticket Status
+are complete in the investigated sample.
+
+However, completeness alone does not establish
+feature reliability or suitability for model training.
+
+The Resolution attribute requires further investigation
+because 84% of its values are missing and the remaining
+values appear semantically suspicious.
+
+Ticket Status also requires temporal validation to
+prevent possible data leakage.
+
+Further feature engineering and model optimization
+should proceed only after feature reliability,
+prediction-time availability, and data leakage
+risks have been assessed.
+
+============================================================
+END OF CONTEXTUAL ATTRIBUTE DISTRIBUTION AUDIT
+============================================================
+"""
