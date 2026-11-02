@@ -1,0 +1,145 @@
+# FEATURE–TARGET LEAKAGE AUDIT REPORT
+
+Project: AI Customer Support Intelligence  
+Audit Type: Feature Availability and Target Leakage Assessment  
+Dataset: customer_support_tickets.csv  
+Dataset Size: 8,469 records  
+Total Columns: 17  
+
+## 1. Audit Objective
+
+The objective of this audit is to identify features that could introduce target leakage into machine learning models.
+
+Target leakage occurs when a model uses information that would not be available at the actual prediction time. This can produce misleading evaluation results and poor real-world performance.
+
+The audit focuses on determining whether each feature is available when a customer support ticket is initially created.
+
+## 2. Prediction Objective
+
+The dataset contains multiple possible prediction targets:
+
+- Ticket Type
+- Ticket Priority
+
+These targets should be treated as separate prediction tasks unless a combined multi-output approach is explicitly designed.
+
+## 3. Potential Target Leakage Features
+
+The following columns require special attention:
+
+### Resolution
+Resolution information is generally generated after the support team investigates or resolves a ticket.
+
+Risk: High  
+Recommendation: Exclude when predicting ticket type or priority at ticket creation.
+
+### Time to Resolution
+This value is known only after the ticket has been resolved.
+
+Risk: High  
+Recommendation: Exclude from initial ticket classification.
+
+### Customer Satisfaction Rating
+Customer satisfaction is generally collected after the support experience.
+
+Risk: High  
+Recommendation: Exclude from initial ticket classification.
+
+### Ticket Status
+Ticket status can change throughout the ticket lifecycle.
+
+Risk: Medium to High  
+Recommendation: Verify whether the status value represents the initial state or a later state. Exclude it if it reflects subsequent ticket activity.
+
+### First Response Time
+This value may only be available after an agent responds.
+
+Risk: Medium to High  
+Recommendation: Exclude when predicting at ticket creation unless the prediction workflow occurs after the first response.
+
+## 4. Identifier and Personal Information Review
+
+Potential identifier or personal information columns include:
+
+- Ticket ID
+- Customer Name
+- Customer Email
+
+These fields should not automatically be treated as useful predictive features.
+
+Risks include:
+- Memorization of individual records.
+- Unintended customer identification.
+- Poor generalization to unseen customers.
+- Privacy and data protection concerns.
+
+Recommendation: Exclude direct identifiers from model training unless a documented, justified use case requires them.
+
+## 5. Candidate Feature Assessment
+
+Potential candidate features must be evaluated according to their availability at prediction time.
+
+Examples include:
+
+- Ticket Description
+- Ticket Subject
+- Ticket Channel
+- Product or service information
+- Other customer or ticket attributes available when the ticket is created
+
+A feature should be retained only when its meaning, data quality, and availability are verified.
+
+## 6. Important Modeling Principle
+
+The feature set must reflect the information available at the exact moment the model is expected to make its prediction.
+
+For example:
+
+If the model predicts Ticket Type immediately after a customer submits a ticket, it must not use resolution details, satisfaction ratings, or future response information.
+
+The same rule applies when predicting Ticket Priority.
+
+## 7. Recommended Feature Selection Process
+
+1. Define the prediction target.
+2. Define the prediction timestamp.
+3. Identify when each feature becomes available.
+4. Exclude post-outcome information.
+5. Review identifier and personal information columns.
+6. Check missing values and data quality.
+7. Validate the selected features using a leakage-safe evaluation process.
+8. Document all feature inclusion and exclusion decisions.
+
+## 8. Audit Limitations
+
+This is a preliminary, column-name-based leakage assessment.
+
+Final decisions require:
+- Inspection of the actual dataset columns.
+- Understanding of how each field is generated.
+- Confirmation of when each field becomes available.
+- Validation against the intended production workflow.
+
+A column should not be considered safe merely because its name does not indicate leakage.
+
+## 9. Final Conclusion
+
+Feature-target leakage is a major risk in customer support classification.
+
+Post-outcome fields such as Resolution, Time to Resolution, and Customer Satisfaction Rating should generally be excluded from models predicting Ticket Type or Ticket Priority at ticket creation.
+
+Ticket Status and First Response Time require additional investigation because their availability depends on the prediction timestamp.
+
+The final training dataset should contain only validated features available at prediction time.
+
+## 10. Next Steps
+
+- Complete the feature availability review.
+- Finalize separate feature lists for Ticket Type and Ticket Priority.
+- Perform train, validation, and test splitting.
+- Build preprocessing pipelines.
+- Establish baseline classification models.
+- Evaluate model performance using leakage-safe validation.
+
+Audit Status: Preliminary Review Completed  
+Final Feature Approval: Pending Validation
