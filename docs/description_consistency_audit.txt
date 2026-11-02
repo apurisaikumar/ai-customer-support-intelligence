@@ -1,0 +1,35 @@
+
+AI CUSTOMER SUPPORT INTELLIGENCE
+DESCRIPTION CONSISTENCY AUDIT
+========================================
+
+Unique normalized descriptions: 8066
+
+Repeated descriptions: 54
+
+Descriptions with conflicting labels: 49
+
+SUSPICIOUS TEXT PATTERN AUDIT
+========================================
+
+Template placeholders: 8469 records
+
+Script tags: 6 records
+
+HTML tags: 199 records
+
+JavaScript patterns: 0 records
+
+Link placeholders: 0 records
+
+CONCLUSION
+========================================
+
+The dataset contains repeated descriptions
+with conflicting Ticket Type labels.
+
+Further investigation is required before
+production model training.
+
+Template-generated text and HTML fragments
+must also be investigated.
