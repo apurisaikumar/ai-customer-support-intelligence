@@ -1,1 +1,38 @@
 
+AI CUSTOMER SUPPORT INTELLIGENCE
+DATA QUALITY AUDIT
+========================================
+
+Dataset dimensions:
+Rows: 8469
+Columns: 17
+
+Ticket Type:
+Unique classes: 5
+Majority baseline: 0.2069
+
+Ticket Subject:
+Unique subjects: 16
+Subject-only baseline: 0.2192
+Normalized mutual information: 0.0011
+
+Description:
+Unique descriptions: 8077
+
+Duplicate records:
+0
+
+Missing target values:
+Ticket Type: 0
+Ticket Priority: 0
+
+Model validation:
+Logistic Regression: 0.2094
+Multinomial Naive Bayes: 0.2102
+Linear SVM: 0.2110
+
+Engineering conclusion:
+Further model optimization should be postponed
+until target-label quality and feature-target
+relationships have been validated.
+
