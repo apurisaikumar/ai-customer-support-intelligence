@@ -1,0 +1,27 @@
+AI CUSTOMER SUPPORT INTELLIGENCE
+TEMPLATE NORMALIZATION AUDIT
+========================================
+
+Objective:
+Investigate repeated ticket descriptions
+containing template-generated placeholders.
+
+Normalization:
+The placeholder {product_purchased}
+was replaced with PLACEHOLDER for
+comparison of normalized descriptions.
+
+Findings:
+- Multiple records share similar normalized descriptions.
+- The same template appears with different Ticket Type labels.
+- Examples include Technical issue,
+  Cancellation request, Product inquiry,
+  and Billing inquiry.
+
+Conclusion:
+Template-generated descriptions may
+contain insufficient information for
+reliable ticket classification.
+
+Further investigation is required before
+production model training.
