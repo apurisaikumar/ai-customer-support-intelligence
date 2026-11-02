@@ -1,0 +1,97 @@
+# AI CUSTOMER SUPPORT INTELLIGENCE
+# SUBJECT AND CONTEXT CONSISTENCY AUDIT
+
+============================================================
+
+## 1. AUDIT OBJECTIVE
+
+The objective of this investigation is to determine whether ticket subjects and contextual attributes provide consistent and meaningful information for ticket classification.
+
+The audit focuses on records sharing an identical normalized ticket description but having different subjects and Ticket Type labels.
+
+## 2. DESCRIPTION GROUP ANALYSIS
+
+Total records in the investigated description group: 25
+
+Unique Ticket Subjects: 13
+
+Unique Ticket Type labels: 5
+
+## 3. TICKET TYPE DISTRIBUTION
+
+| Ticket Type | Record Count |
+|---|---:|
+| Refund request | 9 |
+| Product inquiry | 6 |
+| Technical issue | 5 |
+| Cancellation request | 4 |
+| Billing inquiry | 1 |
+
+Observation:
+
+The same normalized description is associated with five different Ticket Type labels.
+
+This indicates a potential inconsistency between ticket descriptions and their assigned classification labels.
+
+## 4. TICKET SUBJECT DISTRIBUTION
+
+| Ticket Subject | Record Count |
+|---|---:|
+| Cancellation request | 3 |
+| Payment issue | 3 |
+| Product recommendation | 2 |
+| Display issue | 2 |
+| Network problem | 2 |
+| Hardware issue | 2 |
+| Data loss | 2 |
+| Account access | 2 |
+| Software bug | 2 |
+| Product setup | 2 |
+| Product compatibility | 1 |
+| Battery life | 1 |
+| Installation support | 1 |
+
+Observation:
+
+The same normalized description is associated with 13 different ticket subjects.
+
+This suggests that the description may be a generic template rather than a reliable representation of the actual customer problem.
+
+## 5. CONTEXTUAL ATTRIBUTES
+
+The investigation also includes:
+
+- Ticket Priority
+- Ticket Channel
+- Ticket Status
+- Resolution
+
+These attributes require further examination to determine their consistency and usefulness.
+
+Their complete distributions must be reviewed before making additional conclusions.
+
+## 6. ENGINEERING FINDINGS
+
+1. Multiple Ticket Subjects are associated with an identical normalized description.
+2. Five different Ticket Type labels are assigned to the same description group.
+3. The description contains a generic product placeholder.
+4. The description alone may not contain enough information to distinguish the actual customer issue.
+5. Additional contextual investigation is required before selecting prediction features.
+
+## 7. MACHINE LEARNING IMPLICATIONS
+
+These inconsistencies may negatively affect supervised classification.
+
+Potential consequences include:
+
+- Reduced classification accuracy.
+- Confusion between ticket categories.
+- Unreliable training labels.
+- Poor generalization to unseen customer tickets.
+- Misleading model evaluation results.
+
+The subject and contextual attributes should be evaluated before deciding whether they can be used as model features.
+
+## 8. RECOMMENDATIONS
+
+1
